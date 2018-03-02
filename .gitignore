@@ -1,0 +1,7 @@
+/target/
+/logs/
+.idea
+data
+terrier-core-4.2
+.DS_Store
+*.iml
