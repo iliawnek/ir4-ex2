@@ -5,8 +5,10 @@ for file in files:
         for line in src.readlines():
             split_line = line.split('\t')
             measure_name = split_line[0]
+            query = split_line[1]
             measure_value = split_line[2]
-            if measure_name == 'map':
-                dst_map.write(measure_value)
-            elif measure_name == 'P_5':
-                dst_P_5.write(measure_value)
+            if query != 'all':
+                if measure_name == 'map':
+                    dst_map.write(measure_value)
+                elif measure_name == 'P_5':
+                    dst_P_5.write(measure_value)
