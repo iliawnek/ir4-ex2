@@ -1,16 +1,16 @@
 package uk.ac.gla.dcs.dsms;
 
-import org.terrier.structures.postings.IterablePosting;
 import org.terrier.matching.dsms.DependenceScoreModifier;
+import org.terrier.structures.postings.IterablePosting;
 
 /** 
  * You should use this sample class to implement a proximity feature in Exercise 2.
  * TODO: Describe the function that your class implements
  * <p>
- * You can add your feature into a learned model by appending DSM:uk.ac.gla.IRcourse.SampleProxFeatureDSM to the features.list file.
+ * You can add your feature into a learned model by appending DSM:uk.ac.gla.IRcourse.AveragePositionDifferenceDSM to the features.list file.
  * @author TODO
  */
-public class SampleProxFeatureDSM extends DependenceScoreModifier {
+public class AverageMinimumDistanceDSM extends DependenceScoreModifier {
 
 
 	/** This class is passed the postings of the current document,

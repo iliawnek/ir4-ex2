@@ -12,7 +12,7 @@ import org.terrier.structures.postings.IterablePosting;
 import org.terrier.tests.ApplicationSetupBasedTest;
 import org.terrier.utility.ApplicationSetup;
 
-public class TestSampleProxFeatureDSM extends ApplicationSetupBasedTest
+public class TestAveragePositionDifferenceDSM extends ApplicationSetupBasedTest
 {
 	@Test public void testOneDocTwoTerms() throws Exception {
 
@@ -33,7 +33,7 @@ public class TestSampleProxFeatureDSM extends ApplicationSetupBasedTest
 		System.out.println("Positions of term 'fox'="+ Arrays.toString( ((BlockPosting)ips[0]).getPositions()));
 		System.out.println("Positions of term 'jumps'="+ Arrays.toString( ((BlockPosting)ips[1]).getPositions()));
 
-		SampleProxFeatureDSM sample = new SampleProxFeatureDSM();
+		AveragePositionDifferenceDSM sample = new AveragePositionDifferenceDSM();
 		double score = sample.calculateDependence(
             ips, //posting lists
             new boolean[]{true,true},  //is this posting list on the correct document?
