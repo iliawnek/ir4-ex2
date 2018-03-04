@@ -8,24 +8,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * You should use this sample class to implement a proximity feature in Exercise 2.
- * TODO: Describe the function that your class implements
+ * This DSM implements the avg_min_dist term proximity feature.
  * <p>
- * You can add your feature into a learned model by appending DSM:uk.ac.gla.IRcourse.AveragePositionDifferenceDSM to the features.list file.
+ * avg_min_dist(a, b, D) is defined as the average of the shortest distance between each occurrence of the least
+ * frequently occurring term and any occurrence of the other term, where a and b are terms and D is the document.
+ * <p>
+ * Full dependence between query terms is assumed. If there are multiple query terms, the score is the average
+ * avg_min_dist of every pair of query terms.
+ * <p>
+ * If there are fewer than two query terms such that proximity cannot be computed, the score is 0.
  *
- * @author TODO
+ * @author Ken Li
  */
 public class AverageMinimumDistanceDSM extends DependenceScoreModifier {
 
-    /**
-     * This class is passed the postings of the current document,
-     * and should return a score to represent that document.
-     */
     @Override
     protected double calculateDependence(
             IterablePosting[] ips, // posting lists
-            boolean[] okToUse,  // is this posting list on the correct document?
-            double[] phraseTermWeights, boolean SD // not needed
+            boolean[] okToUse, // is this posting list on the correct document?
+            double[] phraseTermWeights,
+            boolean SD
     ) {
 
         // get all position vectors for this document
@@ -44,6 +46,7 @@ public class AverageMinimumDistanceDSM extends DependenceScoreModifier {
         List<Double> avgMinDistances = new ArrayList<>();
         for (int i = 0; i < positionVectors.size(); i++) {
             for (int j = i + 1; j < positionVectors.size(); j++) {
+
                 // identify which position vector has fewer/more occurrences
                 int[] pvi = positionVectors.get(i);
                 int[] pvj = positionVectors.get(j);
@@ -72,9 +75,6 @@ public class AverageMinimumDistanceDSM extends DependenceScoreModifier {
         return avg;
     }
 
-    /**
-     * You do NOT need to implement this method
-     */
     @Override
     protected double scoreFDSD(int matchingNGrams, int docLength) {
         throw new UnsupportedOperationException();
@@ -83,7 +83,7 @@ public class AverageMinimumDistanceDSM extends DependenceScoreModifier {
 
     @Override
     public String getName() {
-        return "ProxFeatureDSM_AveragePositionDifference";
+        return "ProxFeatureDSM_AverageMinimumDistance";
     }
 
 }
