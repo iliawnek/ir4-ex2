@@ -12,6 +12,11 @@ import org.terrier.structures.postings.IterablePosting;
 import org.terrier.tests.ApplicationSetupBasedTest;
 import org.terrier.utility.ApplicationSetup;
 
+/**
+ * Tests the AverageMinimumDistanceDSM class, which implements the avg_min_dist proximity measure.
+ * <p>
+ * @author Ken Li
+ */
 public class TestAverageMinimumDistanceDSM extends ApplicationSetupBasedTest {
     @Test
     public void testTwoTermsOneOccurrence() throws Exception {

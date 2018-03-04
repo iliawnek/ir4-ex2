@@ -12,6 +12,11 @@ import org.terrier.structures.postings.IterablePosting;
 import org.terrier.tests.ApplicationSetupBasedTest;
 import org.terrier.utility.ApplicationSetup;
 
+/**
+ * Tests the AveragePositionDifferenceDSM class, which implements the diff_avg_pos proximity measure.
+ * <p>
+ * @author Ken Li
+ */
 public class TestAveragePositionDifferenceDSM extends ApplicationSetupBasedTest {
     @Test
     public void testTwoTermsOneOccurrence() throws Exception {
