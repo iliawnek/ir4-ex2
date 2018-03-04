@@ -1,7 +1,7 @@
 # Extract per-query map and P_5 values into separate files.
-files = ['PL2c1.0_0', 'te']
+files = ['te', 'te+amd', 'te+dap', 'te+dap+amd']
 for file in files:
-    with open('%s.eval' % (file), 'r') as src, open('%s-map.txt' % (file), 'w') as dst_map, open('%s-P_5.txt' % (file), 'w') as dst_P_5:
+    with open('%s.eval' % (file), 'r') as src, open('map_%s.txt' % (file), 'w') as dst:
         for line in src.readlines():
             split_line = line.split('\t')
             measure_name = split_line[0]
@@ -9,6 +9,4 @@ for file in files:
             measure_value = split_line[2]
             if query != 'all':
                 if measure_name == 'map':
-                    dst_map.write(measure_value)
-                elif measure_name == 'P_5':
-                    dst_P_5.write(measure_value)
+                    dst.write(measure_value)
